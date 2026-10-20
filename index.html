@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Recibo Telefónico</title>
+
+    <!-- Vinculación del archivo CSS -->
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <h1>RECIBO TELEFÓNICO</h1>
+
+        <p class="subtitulo">Consulta y captura los datos de tu servicio telefónico</p>
+
+        <form id="formularioPago">
+
+            <div class="seccion">
+                <h2>Información del servicio</h2>
+
+                <!-- MINUTOS -->
+                <div class="campo">
+                    <label for="minutos">Minutos consumidos:</label>
+
+                    <input
+                        type="text"
+                        id="minutos"
+                        name="minutos"
+                        placeholder="Ejemplo: 150"
+                        inputmode="numeric"
+                        pattern="[0-9]+"
+                        title="Ingresa solamente números"
+                        required>
+                </div>
+
+                <!-- TIPO DE PLAN -->
+                <div class="campo">
+                    <label>Tipo de plan:</label>
+
+                    <div class="opciones">
+                        <label>
+                            <input
+                                type="radio"
+                                name="plan"
+                                value="Prepago"
+                                required>
+                            Prepago
+                        </label>
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="plan"
+                                value="Pospago">
+                            Pospago
+                        </label>
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="plan"
+                                value="Ilimitado">
+                            Ilimitado
+                        </label>
+                    </div>
+                </div>
+
+                <!-- OTROS SERVICIOS -->
+                <div class="campo">
+                    <label>Otros servicios:</label>
+
+                    <div class="opciones">
+                        <label>
+                            <input
+                                type="checkbox"
+                                name="servicios"
+                                value="Internet">
+                            Internet
+                        </label>
+
+                        <label>
+                            <input
+                                type="checkbox"
+                                name="servicios"
+                                value="Mensajes">
+                            Mensajes
+                        </label>
+
+                        <label>
+                            <input
+                                type="checkbox"
+                                name="servicios"
+                                value="Roaming">
+                            Roaming
+                        </label>
+                    </div>
+                </div>
+
+                <!-- PAQUETES -->
+                <div class="campo">
+                    <label for="paquetes">Selecciona un paquete:</label>
+
+                    <select id="paquetes" name="paquetes" required>
+                        <option value="">Selecciona un paquete</option>
+                        <option value="Basico">Paquete básico</option>
+                        <option value="Familiar">Paquete familiar</option>
+                        <option value="Premium">Paquete premium</option>
+                        <option value="Ilimitado">Paquete ilimitado</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <!-- BOTÓN -->
+            <div class="botones">
+                <button type="submit">Realizar pago</button>
+                <button type="reset" class="cancelar">Limpiar formulario</button>
+            </div>
+
+        </form>
+
+        <!-- MENSAJE DE CONFIRMACIÓN -->
+        <div id="mensaje" role="status" aria-live="polite"></div>
+
+        <p class="pie">Portal de Servicio Telefónico</p>
+
+    </div>
+
+    <script>
+        const formulario = document.getElementById("formularioPago");
+        const mensaje = document.getElementById("mensaje");
+
+        formulario.addEventListener("submit", function(evento) {
+            evento.preventDefault();
+
+            mensaje.textContent = "GRACIAS POR TU PAGO";
+            mensaje.style.display = "block";
+        });
+
+        formulario.addEventListener("reset", function() {
+            mensaje.textContent = "";
+            mensaje.style.display = "none";
+        });
+    </script>
+
+</body>
+
+</html>
